@@ -1,4 +1,4 @@
 ---
- key_name: "ansible-key"
+ key_name: "{{ vpc_name }}-key"
  ssh_key_location: ~/.ssh/id_rsa.pub 
  vpc_region: sa-east-1 #Sao Paulo
