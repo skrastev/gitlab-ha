@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   connection: local
+   gather_facts: no
+   vars_files:
+    - aws/vars/ec2_key.yml
+   tasks:
+    - include: aws/tasks/ec2_key.yml
+
