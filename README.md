@@ -6,5 +6,9 @@
  - Python
  - boto
  - AWS
- 
- > ansible-playbook -i hosts site.yml <
+
+## To use this Playbook
+
+ ```shell
+ansible-playbook site.yml
+```
