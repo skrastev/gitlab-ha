@@ -1,6 +1,6 @@
-## Ansible AWS Gitlab HA
+# Ansible AWS Gitlab HA
 
-# Requirements:
+## Requirements:
 
  - Ansible 2.1.0
  - Python
