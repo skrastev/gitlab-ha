@@ -1,0 +1,12 @@
+### AAVHAW Playbook Tasks:
+
+- Create security key
+- Create security group for ELB
+- Configure ELB
+- Create security group for RDS
+- Provision 1 x RDS
+- Create security group for EC2
+- Provision 2 x EC2 - gitlab servers
+- Configure NFS
+- Register EC2 instances on ELB
+- Test
