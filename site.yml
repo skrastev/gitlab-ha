@@ -4,6 +4,7 @@
    gather_facts: no
    vars_files:
     - aws/vars/ec2_key.yml
+    - aws/vars/ec2.yml
    tasks:
     - include: aws/tasks/ec2_key.yml
     - include: aws/tasks/ec2.yml
