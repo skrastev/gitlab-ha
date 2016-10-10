@@ -1,0 +1,11 @@
+- name: Basic provisioning of 2 t2.micro EC2 instances)
+  local_action:
+    module: ec2
+    region: "{{ vpc_region }}"
+#    group: "{{ web_security_groups[0].sg_name }}"
+    keypair: "{{ key_name }}"
+# Ubuntu image 16.04
+    image: ami-60bd2d0c
+    assign_public_ip: True
+    instance_type: t2.micro
+    count: 2
