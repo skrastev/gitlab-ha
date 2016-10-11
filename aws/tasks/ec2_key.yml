@@ -23,4 +23,3 @@
      region: "{{ vpc_region }}"
      name: "{{ key_name }}"
      key_material:  "{{ lookup('file',  ssh_key_location ) }}"  
-

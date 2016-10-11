@@ -1,7 +1,7 @@
 ---
  # Variables for VPC
- vpc_name: tendo
- vpc_region: sa-east-1 # Sao Paulo
+ vpc_name: gitlab
+ vpc_region: eu-west-1 # Ireland
  vpc_cidr_block: 172.25.0.0/16
  public_cidr_1: 172.25.10.0/24
  public_az_1: "{{ vpc_region }}a"
@@ -10,6 +10,8 @@
  private_cidr: 172.25.30.0/24
  private_az: "{{ vpc_region }}c"
 
+ # Please don't change the variables below, until you know what you are doing
+ #
  # Subnets Defination for VPC
  vpc_subnets:
    - cidr: "{{ public_cidr_1 }}" # Public Subnet-1

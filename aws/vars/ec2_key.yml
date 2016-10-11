@@ -1,4 +1,3 @@
 ---
- vpc_region: sa-east-1 #Sao Paulo
- key_name: "{{ vpc_region }}-key"
+ key_name: "{{ vpc_name }}-key"
  ssh_key_location: ~/.ssh/id_rsa.pub 
