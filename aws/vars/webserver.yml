@@ -18,7 +18,7 @@
  # Only Ubuntu distribution is supported
   
  linux_distribution: ubuntu
- ubuntu_release: trusty
+ ubuntu_release: xenial64
  ami_store: ebs
  virutalization_type: hvm
  cpu_architecture: amd64

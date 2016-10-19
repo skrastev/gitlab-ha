@@ -1,0 +1,13 @@
+--- # EFS test
+ - hosts: localhost
+   connection: local
+   gather_facts: no
+   tasks:
+   - name: NFS provisioning
+     efs:
+       state: present
+       name: my_efs
+       targets:
+         - SubnetID: subnet-417ad119
+           SecurityGroups: ["sg-57202f30"]
+

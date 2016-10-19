@@ -13,7 +13,7 @@
      - include: aws/tasks/vpc.yml
      - include: aws/tasks/ec2_key.yml
      - include: aws/tasks/webserver.yml
-#     - include: aws/tasks/rds.yml
+     - include: aws/tasks/rds.yml
      - include: aws/tasks/elb.yml
 
  - hosts: webserver
@@ -22,8 +22,8 @@
    gather_facts: True
    pre_tasks:
      - include_vars: rds_info.yml
-   roles:
-     - common
+#   roles:
+#     - common
 
 
      

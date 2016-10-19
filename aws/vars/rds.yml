@@ -1,12 +1,12 @@
 ---
  multi_zone_option: no
  rds_instance_name: mydb
- rds_db_engine: postgres
+ rds_db_engine: MySQL
  rds_db_size: 5
- rds_db_name: gitlabdb
+ rds_db_name: gitlab
  rds_instance_type: db.t2.micro
- rds_db_username: gitlabdb
- rds_db_password: gitlabdb
+ rds_db_username: gitlab
+ rds_db_password: gitlab
  rds_subnet_group: my_subnet_group
  rds_sg_description: My Subnet Group for wordpress rds instance
  backup_retention_period: 0
@@ -16,6 +16,6 @@
      sg_description: This sg is for db/rds instance
      sg_rules:
        - proto: tcp
-         from_port: 5432
-         to_port: 5432
+         from_port: 3306
+         to_port: 3306
          group_name: "{{ web_security_groups[0].sg_name }}"

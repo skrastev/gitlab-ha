@@ -1,5 +1,5 @@
 ---
- timezone: "Europe/Sofia"
+ timezone: "Asia/Karachi"
  pkgs_list:
    - build-essential
    - python-software-properties

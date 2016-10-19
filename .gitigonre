@@ -1,3 +1,4 @@
-tmp/*
-temp/*
-test/*
+*.retry
+tmp/**/*
+temp/**/*
+test/**/*
