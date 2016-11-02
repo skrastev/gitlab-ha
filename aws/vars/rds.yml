@@ -3,10 +3,10 @@
  rds_instance_name: mydb
  rds_db_engine: MySQL
  rds_db_size: 5
- rds_db_name: gitlab
+ rds_db_name: wordpress
  rds_instance_type: db.t2.micro
- rds_db_username: gitlab
- rds_db_password: gitlab
+ rds_db_username: wordpress
+ rds_db_password: wordpress
  rds_subnet_group: my_subnet_group
  rds_sg_description: My Subnet Group for wordpress rds instance
  backup_retention_period: 0

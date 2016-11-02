@@ -13,12 +13,71 @@
          from_port: 80
          to_port: 80
          cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 443
+         to_port: 443
+         cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 111
+         to_port: 111
+         cidr_ip: 172.25.0.0/16
+       - proto: udp
+         from_port: 111
+         to_port: 111
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 2049
+         to_port: 2049
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 24007
+         to_port: 24007
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 24008
+         to_port: 24008
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 49152
+         to_port: 49152
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 49153
+         to_port: 49153
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 49154
+         to_port: 49154
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 49155
+         to_port: 49155
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 38465
+         to_port: 38465
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 38466
+         to_port: 38466
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 38467
+         to_port: 38467
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
+         from_port: 3306
+         to_port: 3306
+         cidr_ip: 172.25.0.0/16
+
+
+
          
  # Please don't change the variables below, until you know what you are doing
  # Only Ubuntu distribution is supported
   
  linux_distribution: ubuntu
- ubuntu_release: xenial64
+ ubuntu_release: trusty
  ami_store: ebs
  virutalization_type: hvm
  cpu_architecture: amd64

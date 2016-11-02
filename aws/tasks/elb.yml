@@ -40,10 +40,11 @@
      cross_az_load_balancing: "{{ elb_cross_az_load_balancing }}"
      connection_draining_timeout: "{{ elb_connection_draining_timeout }}"
      listeners:
-       - protocol: http
-         load_balancer_port: 80
+       - protocol: https
+         load_balancer_port: 443
          instance_protocol: http
          instance_port: 80
+         ssl_certificate_id: "arn:aws:iam::018155396589:server-certificate/stambata-crt" 
      health_check:
        ping_protocol: "{{ elb_ping_protocol }}"
        ping_port: "{{ elb_ping_port }}"

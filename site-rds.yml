@@ -10,11 +10,11 @@
      - aws/vars/webserver.yml
      - aws/vars/elb.yml
    tasks:
-     - include: aws/tasks/vpc.yml
-     - include: aws/tasks/ec2_key.yml
-     - include: aws/tasks/webserver.yml
-     - include: aws/tasks/elb.yml
-     - include: aws/tasks/rds.yml
+#     - include: aws/tasks/vpc.yml
+#     - include: aws/tasks/ec2_key.yml
+#     - include: aws/tasks/webserver.yml
+#     - include: aws/tasks/elb.yml
+     - include: aws/tasks/rds-test.yml
 
  - hosts: webserver
    sudo: True 

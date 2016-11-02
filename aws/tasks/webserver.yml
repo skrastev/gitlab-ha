@@ -21,16 +21,6 @@
        Name: "{{ vpc_name }}-{{ item.item.sg_name }}"
    with_items: "{{ web_sg.results }}"
  
- - name: WebServer | Search for Ubuntu AMI
-   ec2_ami_search:
-     region: "{{ vpc_region|default('us-east-1') }}"
-     distro: "{{ linux_distribution }}"
-     release: "{{ ubuntu_release }}"
-     store: "{{ ami_store }}"
-     virt: "{{ virutalization_type }}"
-     arch: "{{ cpu_architecture }}"
-   register: imgae_id
- 
  - name: WebServer | Create the WebServer Instance(s)
    local_action:
      module: ec2
@@ -38,11 +28,15 @@
      group: "{{ web_security_groups[0].sg_name }}"
      keypair: "{{ key_name }}"
      instance_type: "{{ web_instance_type }}"
-     image: "{{ imgae_id.ami }}"
+     image: ami-0ae77879
      vpc_subnet_id: "{{ item }}"
      assign_public_ip: True
      wait: True
      wait_timeout: 600
+     user_data: |
+               #!/bin/sh
+               sudo apt-get update
+               sudo apt-get install nginx -y
      instance_tags:
        Name: "{{ vpc_name }}_WEB_Instance"
        Environment: "{{ ENV }}"
@@ -53,23 +47,45 @@
       - "{{ public_subnet_2 }}"
    register: web
 
- - name: WebServer | Set the Instances facts
+ - name: WebServer | Set the Instances facts Public IP addresses
    set_fact:
      instance_public_ip_1: "{{ web.results[0].instances[0].public_ip }}"
      instance_id_1: "{{ web.results[0].instances[0].id }}"
      instance_public_ip_2: "{{ web.results[1].instances[0].public_ip }}"
      instance_id_2: "{{ web.results[1].instances[0].id }}"
 
- - name: WebServer | Add the newly created EC2 instance(s) to the local host group (located inside the directory)
-   local_action: 
-     module: lineinfile 
-     dest: "./hosts" 
-     regexp: "{{ item }}" 
-     insertafter: "[webserver]" 
+# - name: WebServer | Add the newly created EC2 instance(s) to the local host group (located inside the directory)
+#   local_action:
+#     module: lineinfile
+#     dest: "./hosts"
+#     regexp: "{{ item }}"
+#     insertafter: "[webserver]"
+#     line: "{{ item }}"
+#   with_items:
+#      - "{{ instance_public_ip_1 }}"
+#      - "{{ instance_public_ip_2 }}"
+
+
+ - name: WebServer | Set the Instances facts Private IP addresses
+   set_fact:
+     instance_private_ip_1: "{{ web.results[0].instances[0].private_ip }}"
+     instance_id_1: "{{ web.results[0].instances[0].id }}"
+     instance_private_ip_2: "{{ web.results[1].instances[0].private_ip }}"
+     instance_id_2: "{{ web.results[1].instances[0].id }}"
+
+ - name: WebServer | Add the newly created EC2 instance(s) to the local host group (Private IP)
+   local_action:
+     module: lineinfile
+     dest: "./hosts"
+     regexp: "{{ item }}"
+     insertafter: "[webserver]"
      line: "{{ item }}"
    with_items:
       - "{{ instance_public_ip_1 }}"
-      - "{{ instance_public_ip_2 }}" 
+      - "{{ instance_public_ip_2 }}"
+      - "{{ instance_private_ip_1 }}"
+      - "{{ instance_private_ip_2 }}"
+ 
 
  - name: WebServer | Wait for SSH to come up
    local_action: 

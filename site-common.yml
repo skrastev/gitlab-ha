@@ -1,0 +1,10 @@
+---
+ - hosts: webserver
+   sudo: True 
+   remote_user: ubuntu
+   gather_facts: True
+   roles:
+     - common
+
+
+     

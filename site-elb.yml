@@ -10,9 +10,9 @@
      - aws/vars/webserver.yml
      - aws/vars/elb.yml
    tasks:
-     - include: aws/tasks/vpc.yml
-     - include: aws/tasks/ec2_key.yml
-     - include: aws/tasks/webserver.yml
+#     - include: aws/tasks/vpc.yml
+#     - include: aws/tasks/ec2_key.yml
+#     - include: aws/tasks/webserver.yml
      - include: aws/tasks/elb.yml
      - include: aws/tasks/rds.yml
 
@@ -22,13 +22,8 @@
    gather_facts: True
    pre_tasks:
      - include_vars: rds_info.yml
-   roles:
+#   roles:
 #     - common
-#     - ansible-role-glusterfs
-#   vars_files:
-#     - glusterfs/vars/var.yml 
-#   tasks:
-#     - include:  glusterfs/tasks/setup.yml
 
 
      

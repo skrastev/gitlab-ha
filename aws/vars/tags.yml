@@ -1,4 +1,4 @@
 ---
  ENV: testing
- application: gitlab
+ application: wordpress
  server_role: webserver
