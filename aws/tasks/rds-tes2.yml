@@ -1,17 +1,4 @@
 ---
- - name: RDS | Create RDS Security Group
-   local_action:
-     module: ec2_group
-     name: "{{ item.sg_name }}"
-     description: "{{ item.sg_description }}"
-     region: "{{ vpc_region }}" # Change the AWS region here
-     vpc_id: "{{ vpc.vpc_id }}" # vpc is the resgister name, you can also set it manually
-     state: present
-     rules: "{{ item.sg_rules }}"
-   with_items: "{{ rds_security_groups }}"
-   register: rds_sg
-   
- - debug: var=web_sg.results[0].group_id
 
  - name: RDS | Create RDS Subnet Group
    local_action:
@@ -24,7 +11,7 @@
        - "{{ public_subnet_1 }}"
        - "{{ public_subnet_2 }}"
        - "{{ private_subnet }}"
-
+ 
  - name: RDS | Provisioning RDS Instance
    local_action:
      module: rds
@@ -32,7 +19,7 @@
      region: "{{ vpc_region }}"
      multi_zone: "{{ multi_zone_option }}"
      subnet: "default-{{ vpc.vpc_id }}"
-     vpc_security_groups: "{{ web_sg.results[0].group_id }}"
+     vpc_security_groups: "{{ web_security_groups[0].sg_name }}"
      instance_name: "{{ rds_instance_name }}"
      db_engine: "{{ rds_db_engine }}"
      size: "{{ rds_db_size }}"

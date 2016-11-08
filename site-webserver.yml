@@ -13,17 +13,28 @@
 #     - include: aws/tasks/vpc.yml
 #     - include: aws/tasks/ec2_key.yml
 #     - include: aws/tasks/webserver.yml
-     - include: aws/tasks/elb.yml
-     - include: aws/tasks/rds.yml
+#     - include: aws/tasks/elb.yml
+#     - include: aws/tasks/rds-test.yml
 
- - hosts: webserver
+ - hosts: webserver[3]
    sudo: True 
    remote_user: ubuntu
    gather_facts: True
    pre_tasks:
      - include_vars: rds_info.yml
-#   roles:
+     - name: 'install python2'
+       raw: sudo apt-get -y install python-simplejson
+   roles:
 #     - common
+#     - swapfile
+#     - mysql-client
+#     - ansible-role-gitlab 
+     - gitlab
+#     - ansible-role-glusterfs
+#   vars_files:
+#     - glusterfs/vars/var.yml 
+#   tasks:
+#     - include:  glusterfs/tasks/setup.yml
 
 
      

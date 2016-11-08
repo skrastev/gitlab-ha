@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Ben Jones
+  description: Install mysql client and development libraries
+  company: FogButter
+  license: BSD
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+  categories:
+    - database
+    - development
+    - database:sql
+

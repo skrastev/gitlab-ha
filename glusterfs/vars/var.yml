@@ -1,0 +1,15 @@
+---
+# Glusterter configuration.
+gluster_mount_dir: /mnt/gluster
+gluster_brick_dir: /srv/gluster/brick
+gluster_brick_name: gluster
+# Note: This is hardcoded for 2 webservers. Adjust accordingly.
+gluster_brick_config:
+  "replica 2 transport tcp
+  {{ webserver[0] }}:{{ gluster_brick_dir }}
+  {{ webserver[1] }}:{{ gluster_brick_dir }} force"
+
+
+
+
+

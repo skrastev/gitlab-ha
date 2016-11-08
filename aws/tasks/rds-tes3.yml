@@ -11,7 +11,7 @@
    with_items: "{{ rds_security_groups }}"
    register: rds_sg
    
- - debug: var=web_sg.results[0].group_id
+  - debug: var=web_sg.results[0].group_id
 
  - name: RDS | Create RDS Subnet Group
    local_action:
@@ -32,7 +32,7 @@
      region: "{{ vpc_region }}"
      multi_zone: "{{ multi_zone_option }}"
      subnet: "default-{{ vpc.vpc_id }}"
-     vpc_security_groups: "{{ web_sg.results[0].group_id }}"
+     vpc_security_groups: "{{ web-sg.results[0].group_id }}"
      instance_name: "{{ rds_instance_name }}"
      db_engine: "{{ rds_db_engine }}"
      size: "{{ rds_db_size }}"
