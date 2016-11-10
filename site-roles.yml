@@ -1,0 +1,23 @@
+---
+ - hosts: webserver[2] webserver[3]
+   sudo: True 
+   remote_user: ubuntu
+   gather_facts: True
+   roles:
+     - common
+     - swapfile
+     - ansible-role-glusterfs
+   vars_files:
+     - glusterfs/vars/var.yml 
+   tasks:
+     - include:  glusterfs/tasks/setup.yml
+
+# - hosts: webserver[3]
+#   sudo: True
+#   remote_user: ubuntu
+#   gather_facts: True
+#   pre_tasks:
+#     - include_vars: rds_info.yml
+#   roles:
+#     - ansible-role-gitlab
+

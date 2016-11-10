@@ -30,6 +30,10 @@
          to_port: 2049
          cidr_ip: 172.25.0.0/16
        - proto: tcp
+         from_port: 5432
+         to_port: 5432
+         cidr_ip: 172.25.0.0/16
+       - proto: tcp
          from_port: 24007
          to_port: 24007
          cidr_ip: 172.25.0.0/16

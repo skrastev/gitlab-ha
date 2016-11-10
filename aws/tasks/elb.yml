@@ -42,8 +42,8 @@
      listeners:
        - protocol: https
          load_balancer_port: 443
-         instance_protocol: http
-         instance_port: 80
+         instance_protocol: https
+         instance_port: 443
          ssl_certificate_id: "arn:aws:iam::018155396589:server-certificate/stambata-crt" 
      health_check:
        ping_protocol: "{{ elb_ping_protocol }}"

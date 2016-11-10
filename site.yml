@@ -10,32 +10,33 @@
      - aws/vars/webserver.yml
      - aws/vars/elb.yml
    tasks:
-#     - include: aws/tasks/vpc.yml
-#     - include: aws/tasks/ec2_key.yml
-#     - include: aws/tasks/webserver.yml
-#     - include: aws/tasks/elb.yml
-#     - include: aws/tasks/rds.yml
+     - include: aws/tasks/vpc.yml
+     - include: aws/tasks/ec2_key.yml
+     - include: aws/tasks/webserver.yml
+     - include: aws/tasks/elb.yml
+     - include: aws/tasks/rds.yml
 
-# - hosts: webserver[2] webserver[3]
-#   sudo: True 
+ - hosts: webserver[2] webserver[3]
+   sudo: True 
+   remote_user: ubuntu
+   gather_facts: True
+#   pre_tasks:
+#     - include_vars: rds_info.yml
+   roles:
+     - common
+     - swapfile
+     - ansible-role-glusterfs
+   vars_files:
+     - glusterfs/vars/var.yml 
+   tasks:
+     - include:  glusterfs/tasks/setup.yml
+
+# - hosts: webserver[3]
+#   sudo: True
 #   remote_user: ubuntu
 #   gather_facts: True
 #   pre_tasks:
 #     - include_vars: rds_info.yml
 #   roles:
-#     - common
-#     - swapfile
-#     - mysql-client
-#     - ansible-role-glusterfs
-#   vars_files:
-#     - glusterfs/vars/var.yml 
-#   tasks:
-#     - include:  glusterfs/tasks/setup.yml
-
- - hosts: webserver[2]
-   sudo: True
-   remote_user: ubuntu
-   gather_facts: True
-   roles:
-     - ansible-role-gitlab 
+#     - ansible-role-gitlab
 
