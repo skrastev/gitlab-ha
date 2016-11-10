@@ -19,6 +19,9 @@
     - curl
     - postgresql
 
+- name: Stop Nginx server
+  service: name=nginx state=stopped
+
 - name: Download GitLab repository installation script.
   get_url:
     url: "{{ gitlab_repository_installation_script_url }}"

@@ -105,3 +105,6 @@
    with_items: 
      - "{{ instance_public_ip_1 }}"
      - "{{ instance_public_ip_2 }}" 
+ 
+ - name: Refresh inventory
+   meta: refresh_inventory
