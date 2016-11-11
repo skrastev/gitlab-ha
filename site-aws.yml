@@ -1,4 +1,4 @@
----
+--- # aws environment setup
  - hosts: local
    connection: local
    gather_facts: no
@@ -13,6 +13,6 @@
      - include: aws/tasks/vpc.yml
      - include: aws/tasks/ec2_key.yml
      - include: aws/tasks/webserver.yml
-     - include: aws/tasks/elb.yml
      - include: aws/tasks/rds.yml
+     - include: aws/tasks/elb.yml
 

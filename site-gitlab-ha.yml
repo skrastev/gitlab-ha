@@ -1,0 +1,19 @@
+--- # setup and configure gitlab ha
+ - hosts: webserver[2]
+   sudo: True
+   remote_user: ubuntu
+   gather_facts: True
+   pre_tasks:
+     - include_vars: rds_info.yml
+   roles:
+     - ansible-role-gitlab
+
+ - hosts: webserver[3]
+   sudo: True
+   remote_user: ubuntu
+   gather_facts: True
+   pre_tasks:
+     - include_vars: rds_info.yml
+   roles:
+     - ansible-role-gitlab
+
