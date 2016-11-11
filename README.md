@@ -9,6 +9,8 @@ The entry point of the Gitlab HA cluster will be a host and port 443
 
 HA Deployment of Gitlab
 
+ ![alt tag](http://https://github.com/skrastev/gitlab-ha/blob/master/HAGitlabDiagram_ver02.png)
+ 
  - Provision 2 x EC2 instances with Gitlab and GlusterFS roles
  - Provision 1 x RDS instance postgresql role
  - Provision 1 x Elastic Load Balancing (ELB) load balancer
