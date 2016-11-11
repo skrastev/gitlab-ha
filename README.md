@@ -12,7 +12,6 @@ HA Deployment of Gitlab
  - Provision 2 x EC2 instances with Gitlab and GlusterFS roles
  - Provision 1 x RDS instance postgresql role
  - Provision 1 x Elastic Load Balancing (ELB) load balancer
- - 
 
 
 ## Requirements:
@@ -26,8 +25,10 @@ HA Deployment of Gitlab
 
  ```shell
 git clone https://github.com/skrastev/gitlab-ha.git
+
 cd gitlab-ha/
-ansible-playbook -i hosts.yml site.yml
+
+ansible-playbook -i hosts site.yml
 ```
 
 ## References: 
